@@ -1,0 +1,72 @@
+﻿@using Lecturers
+@model Lecturers.Models.User
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Logout</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="login form responsive widget,login form widgets, sign up web forms , login signup responsive web form,flat pricing table,flat drop downs,registration forms,news letter forms,elements" />
+
+    <link href="/smartlogin/css/style.css" rel="stylesheet" type="text/css" media="all">
+
+    <link href="//fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900iSlabo+27px&subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese" rel="stylesheet">
+
+</head>
+
+<style>
+
+    body {
+        color: #000000;
+        width: 30%;
+        margin: 50px auto;
+        box-shadow: 1px 2px 5px rgb(0 0 0 / 40%);
+        padding: 30px;
+        text-align:center;
+    }
+
+    
+
+    .submit {
+        height: 35px;
+        width: 200px;
+        border: none;
+        background-color: red;
+        outline: none;
+        margin: 30px;
+        padding: 0;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    
+</style>
+<body>
+
+    <div class="main-w3l">
+        <div class="w3layouts-main">
+            <h1 class="center">Logout </h1>
+            <p>Bạn muốn thoát tài khoản</p>
+            <div class="form-group center">
+                <a href="~/Users/Login">
+                    <input class="submit" type="submit" value="Logout" name="logout">
+
+                </a>
+               
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+

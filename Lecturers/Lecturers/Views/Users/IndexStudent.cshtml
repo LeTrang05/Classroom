@@ -1,0 +1,84 @@
+﻿@model IEnumerable<Lecturers.Models.User>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+
+    .Myclass{
+        width: 80%;
+        padding: 60px;
+        display: flex;
+        
+    }
+    .Myclass1 {
+        box-shadow: 1px 2px 5px rgb(0 0 0 / 40%);
+        width: 30%;
+        padding: 30px;
+        justify-content: space-between;
+    }
+</style>
+
+<h2>Index</h2>
+<a href="~/Classes/LoginClass">Tham gia lớp học </a>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserEmail)
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserEmail)
+            </td>
+
+        </tr>
+    }
+
+
+
+</table>
+
+
+<div class="Myclass">
+    <div class="Myclass1">
+        <ul class="Myclass_id">
+            <li> Tên lớp học</li>
+            <li> Mã lớp học</li>
+        </ul>
+
+
+    </div>
+
+    <div class="Myclass1">
+        <ul class="Myclass_id">
+            <li> Tên lớp học</li>
+            <li> Mã lớp học</li>
+        </ul>
+
+
+    </div>
+
+    <div class="Myclass1">
+        <ul class="Myclass_id">
+            <li> Tên lớp học</li>
+            <li> Mã lớp học</li>
+        </ul>
+
+
+    </div>
+
+
+
+</div>
