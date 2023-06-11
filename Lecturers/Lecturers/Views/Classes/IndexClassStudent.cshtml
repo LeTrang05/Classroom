@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Lecturers.Models.Class>
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+<link href="~/Content/main.css" rel="stylesheet" />
+<style>
+
+    .myclass {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      
+    }
+
+    .myclass_ed{
+        box-shadow: 1px 2px 5px rgb(0 0 0 / 40%);
+        width: 30%;
+        margin-bottom: 40px;
+        border-radius: 10px;
+        height: 200px;
+    }
+
+    .Myclass_id {
+        width: 100%;
+        background-color: #ed9708;
+        padding: 10px;
+    }
+
+   
+    .footer_ds {
+        align-items: center;
+        width: 100%;
+        display: flex;
+        margin-bottom: 60px;
+    }
+    .footer_ds > h2 {
+        margin: auto;
+
+    }
+    .navbar {
+        display: none;
+    }
+</style>
+
+
+<div class="myclass">
+    <div class="footer_ds">
+        <h2>Danh sách các lớp học của bạn</h2>
+        <a href="~/Classes/LoginClass">Tham gia lớp học</a>
+
+    </div>
+    
+
+
+    @foreach (var item in ViewBag.classs)
+    {
+        <a class="myclass_ed" href="~/Classes/Myclass/@item.ClassId">
+
+            <div class="Myclasses">
+                <ul class="Myclass_id">
+                    <li> @item.ClassName</li>
+                    <li> @item.ClassMaLop</li>
+                </ul>
+                <div class="Myclass_body"></div>
+            </div>
+        </a>
+
+
+    }
+</div>
+
+
+
+
+

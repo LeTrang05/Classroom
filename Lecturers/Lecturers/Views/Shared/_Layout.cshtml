@@ -1,42 +1,145 @@
-﻿<!DOCTYPE html>
-<html>
+﻿@using System.Web.Mvc;
+
+@model IEnumerable<Lecturers.Models.Class>
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+   @* <title>@ViewBag.Title - My ASP.NET Application</title>*@
+  
+    
 </head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" title="more options">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @*@Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
+
+    <style>
+        .navbar-inverse {
+            background-color: #fff;
+        }
+
+        .body, body {
+            width: 100%;
+            margin: 0;
+            display: flex;
+            height: auto !important;
+        }
+        /*css menu_left*/
+        .body_left {
+            width: 160px;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            height: 100vh;
+            padding: 0px 20px;
+            background-color: black;
+            position: fixed;
+            top: 0;
+           /* z-index: 1;*/
+        }
+
+        .menu_left_item img {
+            width: 100%;
+            border-radius: 60%;  
+        }
+
+        ul {
+            list-style: none;
+            padding: 0px;
+        }
+        .image {
+            margin: 30px auto;
+            
+            text-align: center !important;
+            width: 60%;
+        }
+
+        .menu_item {
+            font-weight: bold;
+            cursor: pointer;
+            padding: 20px 0px;
+            border-bottom: 1px solid #f5f5f5;
+            
+        }
+
+        .menu_item a {
+            width: 100%;
+            color: #fff;
+            text-decoration: none;
+        }
+            .menu_item a:hover {
+                color: #8d8585;
+                text-decoration: none;
+            }
+
+        /*css body_right*/
+        .body_right {
+           
+            width: 100%;
+            margin-left: 200px;
+            height: 100%;
+        }
+
+        /*css header*/
+        .footer_class {
+            width: 100%;
+            background-color: #ed9708;
+            padding: 30px 30px;
+            position: fixed;
+            top: 0;
+        }
+
+        .name_Class h1 {
+            margin-bottom: 20px !important;
+            margin-top: 0px !important;
+        }
+        
+        
+    </style>
+
+    <div class="body">
+
+        <div class=" body_left">
+            console.log(Session["idclass"]);
+            <ul class="menu_left_item ">
+                <li class="image"><img src="~/Image/mylogo.jpg" /></li>
+
+                <li class="menu_item ">@Html.ActionLink("Home", "MyClass", "classes", new { id = Session["idclass"] }, null)</li>
+                <li class="menu_item ">@Html.ActionLink("Danh sách điểm", "Indexs", "ImportListPoints", new { id = 2 }, null)</li>
+                <li class="menu_item ">@Html.ActionLink("Biểu đồ điểm", "bieudodiems", "ImportListPoints", new { id = 2 }, null)</li>
+                <li class="menu_item ">@Html.ActionLink("Biểu đồ điểm", "bieudodiems", "ImportListPoints", new { id = 2 }, null)</li>
+            </ul>
+        </div>
+        <div class="body_right">
+            <div class="footer_class">
+                <div class="name_Class"><h1>@Session["user"]</h1></div>
+                
+                <div class="Id_class"><h4>ClassMaLop</h4></div>
             </div>
-            <div class="navbar-collapse collapse">
-                @*<ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>*@
+
+            <div class="body_right_item_1">
+                @RenderBody()
+
             </div>
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
-</body>
-</html>
+
+    </div>
+    <script>
+        const $ = document.querySelector.bind(document);
+        const $$ = document.querySelectorAll.bind(document);
+        const tab_body = $$('.body_right_item_1');
+        const tab_menu = $$('.menu_item');
+        console.log(tab_menu);
+        tab_menu.forEach((tab, index) => {
+            const body_item = tab_body[index]
+
+            tab.onclick = function () {
+                console.log(tab);
+                $(".menu_item.active1").classList.remove("active1")
+                $(".body_right_item_1.active2").classList.remove("active2")
+
+                this.classList.add("active1");
+                body_item.classList.add("active2");
+            }
+
+        })
+    </script>
+
+
+

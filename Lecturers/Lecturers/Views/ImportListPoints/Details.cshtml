@@ -1,0 +1,51 @@
+﻿@model Lecturers.Models.ImportListPoint
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ImportListPoint</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IdClass)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdClass)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdStudent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdStudent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StudentName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StudentName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MyPoints)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MyPoints)
+        </dd>
+
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Indexs")
+</p>

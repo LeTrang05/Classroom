@@ -1,95 +1,78 @@
 ﻿@using Lecturers
 @model Lecturers.classModel.Class.LoginClass
 @{
-    ViewBag.Title = "createClass";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = null;
 }
 
-<h2>Login Class</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login Form Responsive Widget Template:: W3layouts</title>
 
-<style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="login form responsive widget,login form widgets, sign up web forms , login signup responsive web form,flat pricing table,flat drop downs,registration forms,news letter forms,elements" />
+    <script type="application/x-javascript">
+         addeventlistener("load", function() { settimeout(hideurlbar, 0); }, false);
+        function hideurlbar(){ window.scrollto(0,1); } </script>
+
+    <link href="/smartlogin/css/style.css" rel="stylesheet" type="text/css" media="all">
+
+    <link href="//fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900iSlabo+27px&subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link href="~/Content/main.css" rel="stylesheet" />
+</head>
 
 
-
-    .main {
-        color: #000000;
-        width: 20%;
-        margin: 50px auto;
-        box-shadow: 1px 2px 5px rgb(0 0 0 / 40%);
-        padding: 70px 40px;
-        border-radius: 8px;
-    }
-
-    .form-group {
-        width: 100%;
-        margin: auto;
-        display: block;
-        margin-top: 30px;
-    }
-
-    .form-control, .submit {
-        width: 100%;
-        height: 30px;
-        outline: none;
-        padding: 0;
-    }
-
-    .form-control-flex {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 50px;
-    }
-
-    .submit {
-        border: none;
-        background-color: green;
-        color: #fff;
-        cursor: pointer;
-        border-radius: 10px;
-    }
-
-    ul {
-        list-style: none;
-        padding: 0;
-    }
-
-    .text-danger {
-        color: red;
-    }
-
-    .center {
-        text-align: center;
-    }
-</style>
 <body>
+    <div class="body">
 
-    <div class="main">
-        <h1 class="center">Login </h1>
+        <img src="~/Image/background.jpg" />
 
-        @using (Html.BeginForm())
 
-        {
-            @Html.AntiForgeryToken()
+        <div class="main mains">
+            <div class="header">
+                <a class="fass" href="/Users/home"><i class="fas fa-arrow-left"></i></a>
+                <h2 class="center">Login </h2>
 
-            <div class="form-group">
-                @Html.TextBoxFor(m => m.maLop , new { @class = "form-control", @placeholder = "E-Mail" })
-                @Html.ValidationMessageFor(m => m.maLop, "", new { @class = "text-danger" })
+
             </div>
 
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-            <div class="form-group center">
-                <input class="submit" type="submit" value="ThamGia" name="ThamGia">
-            </div>
-        }
+            @using (Html.BeginForm())
 
+
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-group-body">
+
+                    <div class="form-group">
+                        @Html.TextBoxFor(m => m.maLop, new { @class = "form-control", @placeholder = "mã đăng nhập" })
+                        @Html.ValidationMessageFor(m => m.maLop, "", new { @class = "text-danger" })
+                    </div>
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                </div>
+
+
+                <div class="center">
+                    <input class="submit" type="submit" value="Submit" name="Submit">
+                </div>
+            }
+
+        </div>
     </div>
 
 
 </body>
-
+</html>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+
+
+
+
 

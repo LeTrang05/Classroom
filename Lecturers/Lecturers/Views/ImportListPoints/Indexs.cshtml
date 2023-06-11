@@ -1,0 +1,91 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .content_body {
+        margin-top: 200px !important;
+        width: 90%;
+        margin: auto;
+    }
+
+    .import_export {
+        display: flex;
+        justify-content:space-between;
+    }
+    .file-import {
+        display: block;
+        margin-bottom: 20px;
+    }
+</style>
+
+<div class="content_body" >
+    <div class="import_export">
+
+        <div class="upload">
+
+            @using (Html.BeginForm("Upload", "ImportListPoints", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+
+
+                <div class="form-import">
+                    <h4> Import danh sách điểm</h4>
+                    <input class="file-import" type="file" name="UploadedFile" />
+                    <input type="submit" name="Submit" value="Submit" />
+                </div>
+
+            }
+        </div>
+        <div class="export">
+
+            @using (Html.BeginForm("Export", "ImportListPoints", FormMethod.Post))
+            {
+                <h4> Export danh sách điểm</h4>
+                <input type="submit" value="Export" />
+            }
+        </div>
+    </div>
+
+
+    <div class="link">
+        @*<div class="back"><a href="/Classes/MyClass/@Session["idclass"]">Quay lại</a></div>*@
+        @*@Html.ActionLink("Create New", "Create")*@
+    </div>
+
+
+    <h4 style="margin-top: 50px;">Danh sách điểm của sinh viên</h4>
+    <hr />
+    <table cellpadding="0" cellspacing="0" style="width: 100%;">
+        <tr>
+            <th>Id</th>
+            <th>IdClass</th>
+            <th>IdStudent</th>
+            <th>Name Student</th>
+            <th>My Pont</th>
+        </tr>
+        @if (ViewBag.Data != null)
+        {
+            foreach (var customer in ViewBag.Data)
+            {
+                <tr>
+                    <td>@customer.Id</td>
+                    <td>@customer.IdClass</td>
+                    <td>@customer.IdStudent</td>
+                    <td>@customer.StudentName</td>
+                    <td>@customer.MyPoints</td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = customer.Id }) |
+                        @Html.ActionLink("Details", "Details", new { id = customer.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = customer.Id })
+                    </td>
+
+                </tr>
+            }
+        }
+
+
+    </table>
+    <br />
+    <br />
+</div>
+

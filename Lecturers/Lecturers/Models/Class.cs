@@ -14,5 +14,8 @@ namespace Lecturers.Models
         public string ClassName { get; set; }
 
         public string ClassMaLop { get; set; }
+
+        public int TeacherMyClass { get; set; }
+         
     }
 }

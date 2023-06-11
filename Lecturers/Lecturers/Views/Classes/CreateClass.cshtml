@@ -1,112 +1,68 @@
-﻿@using Lecturers
-@using Lecturers.Models
-@model Lecturers.classModel.Class.CreateClass
-
+﻿@model Lecturers.classModel.Class.CreateClass
 @{
-    ViewBag.Title = "CreateClass";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-
-    var session = Session["UserId"] as User;
-
+    Layout = null;
 }
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login Form Responsive Widget Template:: W3layouts</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="login form responsive widget,login form widgets, sign up web forms , login signup responsive web form,flat pricing table,flat drop downs,registration forms,news letter forms,elements" />
+    @*<script type="application/x-javascript">
+         addeventlistener("load", function() { settimeout(hideurlbar, 0); }, false);
+        function hideurlbar(){ window.scrollto(0,1); } </script>*@
+
+    
+
+    <link href="//fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900iSlabo+27px&subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link href="~/Content/main.css" rel="stylesheet" />
+</head>
 
 
-<h2>CreateClass</h2>
-
-<style>
-
-
-
-    .main {
-        color: #000000;
-        width: 50%;
-        margin: 50px auto;
-        box-shadow: 1px 2px 5px rgb(0 0 0 / 40%);
-        padding: 70px 40px;
-        border-radius: 8px;
-    }
-
-    .form-group {
-        width: 100%;
-        margin: auto;
-        display: block;
-        margin-top: 30px;
-    }
-
-    .form-control, .submit {
-        width: 100%;
-        height: 30px;
-        outline: none;
-        padding: 0;
-    }
-
-    .form-control-flex {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 50px;
-    }
-
-    .submit {
-        border: none;
-        background-color: green;
-        color: #fff;
-        cursor: pointer;
-        border-radius: 10px;
-    }
-
-    ul {
-        list-style: none;
-        padding: 0;
-    }
-
-    .text-danger {
-        color: red;
-    }
-
-    .center {
-        text-align: center;
-    }
-</style>
 <body>
+    <div class="body">
 
-    <div class="main">
-        <h1 class="center">Create Class </h1>
-
-        @using (Html.BeginForm())
-
-        {
-            @Html.AntiForgeryToken()
-
-    <div class="form-group">
-        @Html.TextBox("UserID", session.UserID, new { @class = "form-control", @placeholder = "Class Name" })
-       
-        @Html.ValidationMessageFor(m => m.TeacherId, "", new { @class = "text-danger" })
-    </div>
-
-            <div class="form-group">
-                @Html.TextBoxFor(m => m.ClassName, new { @class = "form-control", @placeholder = "Class Name" })
-                @Html.ValidationMessageFor(m => m.ClassName, "", new { @class = "text-danger" })
+        <img src="~/Image/background.jpg" />
+        <div class="main mains">
+            <div class="header">
+                <a class="fass" href="/Users/home"><i class="fas fa-arrow-left"></i></a>
+                <h2 class="center">Tạo lớp học </h2>
             </div>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
 
-            <div class="form-group">
-                @Html.TextBoxFor(m => m.ClassMaLop, new { @class = "form-control", @placeholder = "Mã Lớp" })
-                @Html.ValidationMessageFor(m => m.ClassMaLop, "", new { @class = "text-danger" })
-            </div>
+                <div class="form-group-body">
 
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.TextBoxFor(m => m.ClassName, new { @class = "form-control", @placeholder = "Tên lớp học" })
+                        @Html.ValidationMessageFor(m => m.ClassName, "", new { @class = "text-danger" })
+                    </div>
 
-            <div class="form-group center">
-                <input class="submit" type="submit" value="CreateClass" name="CreateClass">
-            </div>
-        }
+                    <div class="form-group">
+                        @Html.TextBoxFor(m => m.ClassMaLop, new { type = "password", @class = "form-control", @placeholder = "Mã lớp" })
+                        @Html.ValidationMessageFor(m => m.ClassMaLop, "", new { @class = "text-danger" })
+                    </div>
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+   
+                </div>
+                <div class="center">
+                    <input class="submit" type="submit" value="Create" name="Create">
+                </div>
+            }
 
+        </div>
     </div>
 
 
 </body>
-
+</html>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+

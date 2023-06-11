@@ -19,7 +19,7 @@ namespace Lecturers.classModel
         public string UserEmail { get; set; }
 
         [Required(ErrorMessage = "Bạn chưa nhập mật khẩu.")]
-        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,15}$", ErrorMessage = "Mật khẩu có cả chữ số và ít nhất 1 chữ hoa hoặc ký tự đặc biệt.")]
+        //[RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,15}$", ErrorMessage = "Mật khẩu có cả chữ số và ít nhất 1 chữ hoa hoặc ký tự đặc biệt.")]
         public string UserPassword { get; set; }
 
         

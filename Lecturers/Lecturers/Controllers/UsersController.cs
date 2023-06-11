@@ -11,6 +11,20 @@ namespace Lecturers.Controllers
         private DBContext db = new DBContext();
 
         [HttpGet]
+        public ActionResult home()
+        {
+            return View();
+        }
+
+
+        [HttpGet]
+        public ActionResult homemaster()
+        {
+            ViewBag.users = TempData["data"];
+            return View();
+        }
+
+        [HttpGet]
         public ActionResult Login()
         {
             return View();
@@ -25,17 +39,13 @@ namespace Lecturers.Controllers
                 var data = db.Users.AsEnumerable().FirstOrDefault(a => a.UserEmail.Equals(loginUser.UserEmail) && a.UserPassword.Equals(loginUser.UserPassword));
                 if (data != null)
                 {
+                    TempData["data"] = data.UserPosition;
+                    TempData["id"] = data.UserID;
+                    Session["id"] = data.UserID;
+                    Session["user"] = data.UserName;
+                    return RedirectPermanent("~/Users/homemaster");
                     
-                    if (data.UserPosition == "Giảng viên")
-                    {
-                        Session["UserId"] = data;
-                        return RedirectPermanent("~/Users/IndexTeacher");
-                    }
-                    else
-                    {
-                       
-                        return RedirectPermanent("~/Users/IndexStudent");
-                    }
+                    
                 }
                 else
                 {
@@ -54,6 +64,12 @@ namespace Lecturers.Controllers
       
         [HttpGet]
         public ActionResult Registers()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Registermater()
         {
             return View();
         }
@@ -80,14 +96,9 @@ namespace Lecturers.Controllers
 
                         db.Users.Add(newUser);
                         db.SaveChanges();
-                        if (newUser.UserPosition == "Giảng viên")
-                        {
-                            return RedirectPermanent("~/Users/Index");
-                        }
-                        else
-                        {
-                            return RedirectPermanent("~/Users/Indexs");
-                        }  
+                        
+                        return RedirectPermanent("~/Users/Registermater");
+                           
                     }
                     else { 
 
@@ -127,15 +138,8 @@ namespace Lecturers.Controllers
         }
 
 
-        public ActionResult IndexStudent()
-        {
-            return View(db.Users.ToList());
-        }
-
-        public ActionResult IndexTeacher()
-        {
-            return View(db.Users.ToList());
-        }
+        
+        
 
         
 

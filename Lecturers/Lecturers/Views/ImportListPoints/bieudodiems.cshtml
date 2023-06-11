@@ -1,0 +1,140 @@
+﻿@using Lecturers.Core;
+@using Newtonsoft.Json
+
+@model List<ChartDto>
+@{
+    var dataChart = ViewBag.databieudo;
+    var dataChart2 = ViewBag.mydata;
+    var lstData = Html.Raw(JsonConvert.SerializeObject(dataChart));
+    var lstData2 = Html.Raw(JsonConvert.SerializeObject(dataChart2));
+}
+
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<style>
+    .navbar {
+        display: none;
+    }
+
+    #myChart {
+        width: 90% !important;
+        height: 400px;
+        justify-content: center;
+        margin: auto !important;
+    }
+
+    .back {
+        margin-top: 20px;
+        padding: 10px;
+        width: 100px !important;
+        justify-content: center;
+    }
+
+    .bieudo {
+        width: 100%;
+        margin: auto;
+        margin-top: 180px;
+    
+    }
+
+    #myChart2 {
+        width: 90% !important;
+        justify-content: center;
+        margin: auto !important;
+        margin-top: 80px !important;
+    }
+    h2 {
+       
+        text-align:center;
+    }
+</style>
+
+<div>
+    <select id="types" onchange="genderChanged()">
+        <option value=""> -- Chọn -- </option>
+        <option value="bar">biều đồ cột</option>
+        <option value="line"> Biểu đồ đường </option>
+        <option value="pie"> Biểu đồ tròn </option>
+    </select>
+</div>
+
+<div class="back"><a href="/Classes/MyClass/@Session["idclass"]">Quay lại</a></div>
+
+
+<div class="bieudo">
+    <h2>Biểu đồ điểm</h2>
+    <canvas id="myChart"></canvas>
+
+    <canvas id="myChart2"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+
+    function genderChanged() {
+    }
+
+    let dataChartLeft = eval(@lstData)
+    let dataChartLeft2 = eval(@lstData2)
+    const ctx = document.getElementById('myChart');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: "",
+            datasets: [{
+                label:"",
+                data: dataChartLeft,
+                borderWidth: 1,
+                backgroundColor: [
+                    "#f38b4a",
+                    "#56d798",
+                    "#ff8397",
+                    "#6970d5"
+                ]
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    const ctx2 = document.getElementById('myChart2');
+    new Chart(ctx2, {
+        type: 'line',
+        data: {
+            labels: "",
+            datasets: [{
+                label: "",
+                data: dataChartLeft,
+                borderWidth: 1,
+                backgroundColor: [
+                    "#f38b4a",
+                    "#56d798",
+                    "#ff8397",
+                    "#6970d5"
+                ]
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+
+
+</script>
+
+
+

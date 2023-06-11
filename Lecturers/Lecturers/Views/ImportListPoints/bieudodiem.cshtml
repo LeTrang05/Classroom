@@ -1,0 +1,53 @@
+﻿@using Lecturers.Core;
+@using Newtonsoft.Json
+
+@model List<ChartDto>
+@{
+    var dataChart = ViewBag.mydata;
+    var lstData = Html.Raw(JsonConvert.SerializeObject(dataChart));
+}
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<input id="ID" value="show biểu đồ" type="button" />
+
+
+<div>
+    <canvas id="myChart"></canvas>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+
+     let dataChartLeft = eval(@lstData)
+
+    const ctx = document.getElementById('myChart');
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Boston', 'Worcester', 'Springfield', 'Lowell', 'Cambridge', 'New Bedford', 'Boston', 'Worcester', 'Springfield', 'Lowell', 'Cambridge', 'New Bedford'],
+            datasets: [{
+                label: '# of Votes',
+                data: dataChartLeft,
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+   
+</script>
+
+
+

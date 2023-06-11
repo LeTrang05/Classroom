@@ -9,6 +9,9 @@ namespace Lecturers.Models
     {
         public int id { get; set; }
         public string name { get; set; }
-        public int age { get; set; }
+        public string msv { get; set; }
+        public string malop { get; set; }
+        public double diem { get; set; }
     }
+
 }

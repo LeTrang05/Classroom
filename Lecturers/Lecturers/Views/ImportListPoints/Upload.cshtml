@@ -1,0 +1,87 @@
+﻿
+
+<style>
+    .form-import {
+        display: block;
+        width: 40%;
+        margin-left: 0;
+        margin-top: 40px;
+        padding: 20px;
+    }
+
+    .file-import {
+        margin-bottom: 40px;
+        margin-right: 40px;
+    }
+
+    table {
+        width: 80%;
+    }
+</style>
+@{
+    ViewBag.Title = "Index";
+}
+
+@using (Html.BeginForm("Upload", "ImportListPoints", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+
+    <div class="form-import">
+        <input class="file-import" type="file" name="UploadedFile" />
+        <input type="submit" name="Submit" value="Submit" />
+    </div>
+
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+</head>
+@Html.ActionLink("Create New", "Create")
+<body>
+    <h4 style="margin-top: 50px;">Danh sách điểm của sinh viên</h4>
+    <hr />
+    <table cellpadding="0" cellspacing="0">
+        <tr>
+            <th>Id</th>
+            <th>IdClass</th>
+            <th>IdStudent</th>
+            <th>Name Student</th>
+            <th>My Pont</th>
+        </tr>
+        @if (ViewBag.Data != null)
+        {
+            foreach (var customer in ViewBag.Data)
+            {
+                <tr>
+                    <td>@customer.Id</td>
+                    <td>@customer.IdClass</td>
+                    <td>@customer.IdStudent</td>
+                    <td>@customer.StudentName</td>
+                    <td>@customer.MyPoints</td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = customer.Id }) |
+                        @Html.ActionLink("Details", "Details", new { id = customer.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = customer.Id })
+                    </td>
+
+                </tr>
+            }
+        }
+        else
+        {
+            <h1>Reload Page</h1>
+        }
+
+    </table>
+    <br />
+    <br />
+    @using (Html.BeginForm("Export", "ImportListPoints", FormMethod.Post))
+    {
+        <input type="submit" value="Export" />
+    }
+</body>
+</html>

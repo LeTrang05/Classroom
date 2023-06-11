@@ -10,5 +10,6 @@ namespace Lecturers.classModel.Class
     {
         [Required(ErrorMessage ="Bạn chưa nhập trường này.")]
         public string maLop { get; set; }
+
     }
 }
